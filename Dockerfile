@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y pkg-config libssl-dev
 WORKDIR /usr/src/lazymc
 ARG LAZYMC_VERSION
 ENV LAZYMC_VERSION=$LAZYMC_VERSION
-RUN git clone --branch v$LAZYMC_VERSION https://github.com/timvisee/lazymc .
+RUN git clone https://github.com/pmdevita/lazymc .
 RUN cargo build --target x86_64-unknown-linux-musl --release --locked
 
 # build lazymc-legacy
@@ -23,7 +23,7 @@ RUN apt-get update && apt-get install -y pkg-config libssl-dev
 WORKDIR /usr/src/lazymc
 ARG LAZYMC_LEGACY_VERSION
 ENV LAZYMC_LEGACY_VERSION=$LAZYMC_LEGACY_VERSION
-RUN git clone --branch v$LAZYMC_LEGACY_VERSION https://github.com/timvisee/lazymc .
+RUN git clone https://github.com/pmdevita/lazymc .
 RUN cargo build --target x86_64-unknown-linux-musl --release --locked
 
 # build this app
