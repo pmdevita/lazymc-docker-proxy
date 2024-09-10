@@ -1,8 +1,8 @@
 name: Build And Push Docker Image
 on:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - master
 
 jobs:
   build:
@@ -26,39 +26,3 @@ jobs:
         uses: ./.github/actions/docker
         with:
           publish: true
-    
-  release:
-    name: Release
-    runs-on: ubuntu-latest
-
-    permissions:
-      contents: write
-      pull-requests: write
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          ref: master
-
-      - name: Update changelog
-        id: update_changelog
-        uses: thomaseizinger/keep-a-changelog-new-release@3.1.0
-        with:
-          tag: ${{ github.ref_name }}
-
-      - name: Release
-        uses: softprops/action-gh-release@v2
-        with:
-          body: ${{ steps.update_changelog.outputs.release-notes }}
-          draft: false
-          prerelease: false
-
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v7
-        with:
-          title: Release ${{ github.ref_name }}
-          branch: release/${{ github.ref_name }}
-          labels: release
-          commit-message: "[ci skip] update changelog for ${{ github.ref_name }}"
-          body: This PR was created by the release workflow.
