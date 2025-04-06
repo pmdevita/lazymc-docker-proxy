@@ -26,7 +26,7 @@ FROM --platform=$BUILDPLATFORM rust-setup AS lazymc-builder
 WORKDIR /usr/src/lazymc
 ARG LAZYMC_VERSION
 ENV LAZYMC_VERSION=$LAZYMC_VERSION
-RUN git clone --branch v$LAZYMC_VERSION https://github.com/timvisee/lazymc .
+RUN git clone https://github.com/pmdevita/lazymc .
 RUN cargo build --target "$(cat /rust-arch)" --release --locked
 RUN mv /usr/src/lazymc/target/"$(cat /rust-arch)" /usr/src/lazymc/target/output_final
 
@@ -35,7 +35,7 @@ FROM --platform=$BUILDPLATFORM rust-setup AS lazymc-legacy-builder
 WORKDIR /usr/src/lazymc
 ARG LAZYMC_LEGACY_VERSION
 ENV LAZYMC_LEGACY_VERSION=$LAZYMC_LEGACY_VERSION
-RUN git clone --branch v$LAZYMC_LEGACY_VERSION https://github.com/timvisee/lazymc .
+RUN git clone https://github.com/pmdevita/lazymc .
 RUN cargo build --target "$(cat /rust-arch)" --release --locked
 RUN mv /usr/src/lazymc/target/"$(cat /rust-arch)" /usr/src/lazymc/target/output_final
 

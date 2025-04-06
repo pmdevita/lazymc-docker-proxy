@@ -1,5 +1,11 @@
 # lazymc-docker-proxy
 
+Forked to just readd support for 1.20.1 since my server is stuck on that version.
+
+---
+
+# lazymc-docker-proxy
+
 By using this image, you can combine the straightforward management of Minecraft servers using [itzg/minecraft-server](https://github.com/itzg/docker-minecraft-server) with the efficiency of [lazymc](https://github.com/timvisee/lazymc).
 
 If you have multiple Docker Minecraft servers and you are low on resources or want to save compute power, this project is for you. With `lazymc-docker-proxy`, you can dynamically start a Docker Minecraft server when a player joins and shut it down when the server is idle.
