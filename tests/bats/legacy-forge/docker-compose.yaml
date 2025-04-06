@@ -1,5 +1,3 @@
-version: '3.7'
-
 services:
   lazymc-legacy-forge:
     container_name: lazymc-legacy-forge
