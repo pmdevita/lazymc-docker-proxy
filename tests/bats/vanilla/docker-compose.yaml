@@ -1,5 +1,3 @@
-version: '3.7'
-
 services:
   lazymc-vanilla:
     container_name: lazymc-vanilla
@@ -25,6 +23,7 @@ services:
     restart: no
     environment:
       EULA: "TRUE"
+      VERSION: 1.20.1
     volumes:
       - data:/data
 
